@@ -59,8 +59,6 @@ $("button").on("click", function() {
 
 		// if ($('#topic-input').val() !== "") {
   //       renderButtons();
-  //       } else {
-  //           alert("Field blank. Please enter a reaction");
-  //       };
+  //       
 
 });//close document ready
