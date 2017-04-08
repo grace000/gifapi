@@ -31,6 +31,10 @@ $("button").on("click", function() {
 
         //store retrieved data inside an object called response
         }).done(function(response) {
+
+        //Empty div that houses gifs so that new search will only display 
+        //most recent search selection
+        $("#gifs-appear-here").empty();
         
         // make a variable ot hold data key set it equal to response.data
         var results = response.data 
@@ -53,9 +57,21 @@ $("button").on("click", function() {
 
         // Prepend the reactionDiv variable to the element with an id of gifs-appear-here.
         $("#gifs-appear-here").prepend(reactionDiv);
+
         };
        });//close button on click function
   	});//close object response
+
+$("#search-button").on("click", function() {
+  //Empty div that houses gifs so that new search will only display 
+  //most recent search selection
+  $("#gifs-appear-here").empty();
+  var addUserBtn = $("input[id=add-topic]").val();
+	// var newbtn = $("<button>");
+  $("#btn-section").append("<button>" + addUserBtn + "</button>");
+ 
+	// $("#btn-section").append(newbtn);
+});
 
 		// if ($('#topic-input').val() !== "") {
   //       renderButtons();
