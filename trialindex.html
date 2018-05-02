@@ -19,14 +19,14 @@
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
 	<!--Linking javascript file-->
-	<script src="assets/javascript/gifinder.js"></script>
+	<script src="assets/javascript/giftrials.js"></script>
 
 </head>
 <body>
 
 <div class="container">
 	<div class="row">
-		<div class="jumbotron text-center">
+		<div class="jumbotron text-center" id="animate-area">
 			<h1>Gif Finder</h1>
 		</div>
 	</div>
@@ -61,21 +61,7 @@
 		<h3 class="panel-title">Select a reaction</h3>
 	</div>
 
-	<div id="btn-section" class="panel-body">
-
-			<button data-reaction="love" class="btn btn-success">Love</button>
-  			<button data-reaction="clap" class="btn btn-success">Clap</button>
-			<button data-reaction="no" class="btn btn-success">No</button>
-			<button data-reaction="dislike" class="btn btn-success">Dislike</button>
-			<button data-reaction="Eyeroll" class="btn btn-success">Eye Roll</button>
-			<button data-reaction="laughter" class="btn btn-success">Laughter</button>
-			<button data-reaction="dance" class="btn btn-success">Dance</button>
-			<button data-reaction="angry" class="btn btn-success">Angry</button>
-			<button data-reaction="joy" class="btn btn-success">Joy</button>
-			<button data-reaction="facepalm" class="btn btn-success">Facepalm</button>
-			<button data-reaction="idk" class="btn btn-success">IDK</button>
-			<button data-reaction="suspicious" class="btn btn-success">Suspicious</button>
-	</div>
+	<div id="btn-section" class="panel-body"></div>
 </div>
 </div>
 
@@ -87,7 +73,7 @@
 	</div>
 
 	<div class="panel-body">
-		<form id="topic-form">
+		<div id="topic-form">
      		
       		<input type="text" id="topic-input" placeholder=" i.e. clap">
       		
@@ -97,7 +83,7 @@
       		<!-- Button triggers new movie to be added -->
       		<button id="search-button" type="submit" class="btn btn-default">Search</button>
       		<!-- <input id="add-topic" type="submit" value="Search"> -->
-    	</form>
+    	</div>
 	</div>
 </div>
 </div>

@@ -15,12 +15,28 @@ var topics = [
 	"suspicious"
 ];
 
-//  var gifHome = $('gifs-appear-here');
+
+function gifReaction() {
+  $("#gifs-appear-here").empty();
+
+    for (var k = 0; k < topics.length; k++) {
+      var newTopic = $("<button>").text(topics[k]);
+      newTopic.addClass("btn btn-primary");
+      newTopic.attr('data-reaction', topics[k]);
+      $('#btn-section').append(newTopic);
+    }
+    getReaction();
+}   gifReaction();
+
+ // var gifHome = $('gifs-appear-here');
 
 
-$("button").on("click", function() {
+function getReaction (){
+  $("#btn-section").on("click","button",function(){ 
+
       var reactions = $(this).attr("data-reaction");
-
+      // var reactions = $(this).attr("data-name");
+      console.log(reactions);
       //Building the URL needed to query the database
       var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
         reactions + "&api_key=dc6zaTOxFJmzC&limit=5";
@@ -37,7 +53,7 @@ $("button").on("click", function() {
         //most recent search selection
         $("#gifs-appear-here").empty();
         
-        // make a variable ot hold data key set it equal to response.data
+        // make a variable to hold data key set it equal to response.data
         var results = response.data 
 
         // ========================
@@ -54,12 +70,13 @@ $("button").on("click", function() {
 
         // Make an image tag with jQuery and store it in a variable named reactionImage.
         var reactionImage = $("<img>");
-              
+
+        // Set the image's src to results[i]'s fixed_height.url.
         reactionImage.attr("src", stillImg);
         reactionImage.attr("data-still", stillImg);
         reactionImage.attr("data-animate", animateImg);
         reactionImage.attr("data-state", "still");
-        reactionImage.addClass("imageDiv");
+        reactionImage.addClass("col-md-4 imageDiv");
 
         // Append the reactionImage variable to the reactionDiv variable.
         reactionDiv.prepend(reactionImage);
@@ -68,7 +85,6 @@ $("button").on("click", function() {
         $("#gifs-appear-here").prepend(reactionDiv);
 
         };
-
         $(".imageDiv").on("click", function() {
             var state = $(this).attr("data-state");
               if (state === "still") {
@@ -79,26 +95,26 @@ $("button").on("click", function() {
                 $(this).attr("data-state", "still");
                 }
         });
-
        });//close button on click function
-  	});//close object response
+      })
+  	};//close object response
+
+
 
 $("#search-button").on("click", function() {
-
-  //Empty div that houses gifs so that new search will only display 
-  //most recent search selection
   $("#gifs-appear-here").empty();
-  var addUserBtn = $("#topic-input").val();
-  addUserBtn.attr("data-reaction");
-
-	// var newbtn = $("<button>");
-
-  $("#btn-section").append("<button>" + addUserBtn + "</button>");
-  
-	// $("#btn-section").append(newbtn);
-});
-
-		// if ($('#topic-input').val() !== "") {
-  //       renderButtons();  
+    var newReaction = $("#topic-input").val().trim();
+      if ($("#topic-input").val() !== "") {
+        var addNewBtn = $("<button>").text(newReaction);
+        addNewBtn.addClass("btn btn-primary");
+        addNewBtn.attr("data-reaction", newReaction);
+        // var newReaction = addUserBtn;
+        $("#btn-section").prepend(addNewBtn);
+        // (addNewBtn).appendTo("#btn-section");
+      } else (alert("please add enter reaction"))
+    console.log(addNewBtn);
+    getReaction();
+});  
+ 
 
 });//close document ready
